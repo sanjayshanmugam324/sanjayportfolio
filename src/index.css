@@ -2,15 +2,15 @@
 
 :root {
   font-family: 'DM Sans', sans-serif;
-  color: #172a48;
-  background: #ffffff;
+  color: #f1f5ee;
+  background: #0b100f;
   font-size: 17px;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --navy: #172a3a;
-  --blue: #2f7654;
-  --line: #e2e4df;
+  --navy: #0b100f;
+  --blue: #d2ff5b;
+  --line: rgba(241, 247, 235, .12);
 }
 
 * { box-sizing: border-box; }
@@ -18,6 +18,6 @@ html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; }
 a { color: inherit; text-decoration: none; }
 button, a { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid rgba(47,118,84,.6); outline-offset: 4px; }
+:focus-visible { outline: 3px solid rgba(210,255,91,.7); outline-offset: 4px; }
 svg { width: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 ::selection { color: white; background: var(--blue); }
