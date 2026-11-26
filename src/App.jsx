@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import heroImage from './assets/hero.jpeg'
 import resumePdf from './assets/Sanjay_S_AWS_DevOps_Resume_March_2024.pdf'
 import billingHome from './assets/Jewellbisbilling.png'
@@ -7,8 +7,6 @@ import chitHome from './assets/chit.png'
 import chitPlans from './assets/chit2.png'
 import portfolioPreview from './assets/portfolio.png'
 import './App.css'
-
-const HeroScene = lazy(() => import('./HeroScene'))
 
 const skills = [
   {
@@ -120,12 +118,6 @@ function App() {
   }
 
   useEffect(() => {
-    const revealElements = document.querySelectorAll(
-      '[data-reveal], .project-card, .role, .education-item, .certification-card, .skills-grid article',
-    )
-
-    document.documentElement.classList.add('has-scroll-reveal')
-
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -138,15 +130,11 @@ function App() {
       { threshold: 0.14 },
     )
 
-    revealElements.forEach((element) => {
-      element.classList.add('scroll-reveal')
+    document.querySelectorAll('[data-reveal]').forEach((element) => {
       revealObserver.observe(element)
     })
 
-    return () => {
-      revealObserver.disconnect()
-      document.documentElement.classList.remove('has-scroll-reveal')
-    }
+    return () => revealObserver.disconnect()
   }, [])
 
   return (
@@ -177,9 +165,6 @@ function App() {
       </nav>
 
       <section className="hero-section" id="top">
-        <Suspense fallback={null}>
-          <HeroScene />
-        </Suspense>
         <div className="hero-copy">
           <p className="eyebrow"><span /> OPEN TO SOFTWARE DEVELOPER & AWS ROLES</p>
           <h1>I build React apps.<br /><em>Then ship them on AWS.</em></h1>
